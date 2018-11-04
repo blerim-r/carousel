@@ -1,0 +1,235 @@
+body , html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+}
+.div-1 {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    max-height: 300px;
+}
+.div1-in-div-1 {
+    height: 100%;
+    display: flex;
+    position: relative;
+
+}
+.div2-in-div-1 {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+.div3-in-div-1 {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+}
+.div3-in-div-1-contain {
+    display: flex;
+    justify-content: center;
+}
+.back-blck {
+    background-color: black;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    text-align: center;
+
+
+    justify-content: center;
+    flex-flow: column;
+    display: flex;
+}
+.position {
+    display: flex!important;
+    justify-content: center!important;
+    flex-flow: column!important;
+}
+.div-2 {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+.w-100 {
+    width: 100%;
+}
+.img-prof {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+}
+.tx-al-cnt {
+    text-align: center;
+}
+.marg-0-10px {
+    margin: 0 10px;
+    cursor: pointer;
+
+}
+.div-input {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+}
+.input-file {
+    visibility: hidden;
+}
+.div-img-prf{
+    margin: auto;
+    width: 80%;
+    height: 80%;
+ }
+.div-input-2 {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    height: 35px;
+}
+.input-file-2 {
+    visibility: hidden;
+    display: none!important;
+}
+.buton-css {
+    width: 150px;
+    border-radius: 30px;
+    border: 2px solid #d6cdcd;
+    cursor: pointer;
+    color: #6f0101;
+    font-size: unset;
+
+}
+.buton-css:focus {
+               outline: 0;
+           }
+.buton-css:hover {
+    background-color: #c1c1c1;
+}
+.images-container{
+    width: 100%;
+    height: 450px;
+}
+.new-div {
+    height: 450px;
+    width: 400px;
+}
+.new-img {
+    height: 100%;
+    width: 98%;
+    margin: 5px;
+}
+
+#left, #right {
+    font-size: xx-large;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+#right {
+    right: 0;
+}
+
+.slick-container {
+    position: relative;
+}
+.full-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: rgba(47, 45, 45, 0.7);
+    z-index: 99999999999;
+}
+.modal-images {
+    width: 100%;
+    height: 100%;
+}
+.spn-close {
+    color: white;
+    font-size: 35px;
+    top: 0;
+    position: absolute;
+    cursor: pointer;
+    right: 20px;
+}
+.imgContainer {
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.biografia-css {
+    width: 50%;
+    margin: 0 auto ;
+}
+.text-biog {
+    text-align: justify;
+    display: none;
+    height: 275px;
+    overflow-y: auto;
+    font-size: large;
+}
+.modal-css {
+    /*display: block;*/
+    /*padding-right: 17px;*/
+    /*margin: auto;*/
+    /*width: fit-content;*/
+    /*font-size: inherit;*/
+    margin: auto;
+    width: fit-content;
+    font-size: 0;
+}
+
+
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+.divi-biografi-hover {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    overflow-y: auto;
+    font-size: x-large;
+}
+
+#bioH1 {
+     margin: 0!important;
+ }
