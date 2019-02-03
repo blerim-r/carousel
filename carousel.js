@@ -1,6 +1,6 @@
 function renderImage(file) {
     if (typeof file === 'undefined') {
-        alert("ju nuk zgjodhet asnje file");
+        alert("no file chosen");
         return;
     }
     var reader = new FileReader();
@@ -8,8 +8,6 @@ function renderImage(file) {
     reader.readAsDataURL(file);
     reader.onload = function (event) {
         the_url = event.target.result;
-        // var image = document.getElementById('profImage');
-        // image.src =  the_url;
 
         var image = $("#profImage");
         image.attr("src",the_url);
@@ -17,7 +15,7 @@ function renderImage(file) {
 }
 function renderImage1(file) {
     if (typeof file === 'undefined') {
-        alert("ju nuk zgjodhet asnje file");
+        alert("no file chosen");
         return;
     }
     var reader = new FileReader();
@@ -27,31 +25,46 @@ function renderImage1(file) {
         var div = $("<div class='new-div'></div>");
         var element = $("#imagesss");
         element.append(div);
-       var img = $("<img class='new-img'>");
+        var img = $("<img class='new-img'>");
         img.appendTo(div);
         img.attr("src",the_url);
-
-        // var div = document.createElement("div");
-        // div.classList.add("new-div")
-        // var element = document.getElementById("imagesss");
-        // element.appendChild(div);
-        // var img = document.createElement("img");
-        // img.classList.add("new-img");
-        // div.appendChild(img);
-        // img.src = the_url ;
+        var spnX = document.createElement("span");
+        spnX.classList.add("spnXCSS");
+        spnX.innerHTML = "X";
+        div.append(spnX);
 
         var imgContainer = $('.images-container');
         if (imgContainer.hasClass('slick-initialized')) {
             imgContainer.slick('unslick');
         }
         imgContainer.slick({
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
             centerMode: false,
             variableWidth: true,
             infinite: true,
             prevArrow: '#left',
             nextArrow: '#right',
+        });
+
+        div.hover(function () {
+            $(spnX).css("visibility","visible");
+        },function () {
+            $(spnX).css("visibility","hidden");
+        });
+
+        spnX.addEventListener("click", function () {
+            imgContainer.slick('unslick');
+            div.remove();
+            imgContainer.slick({
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                centerMode: false,
+                variableWidth: true,
+                infinite: true,
+                prevArrow: '#left',
+                nextArrow: '#right',
+            });
         });
     }
 }
@@ -66,70 +79,75 @@ $(".images-container").on("click","img", function(e) {
     div1.append(img);
     var span = $("<span class='spn-close'>x</span>");
     div1.append(span);
-    span.click(function () {
+    span.on("click" ,function () {
         $(".full-container")[0].remove();
     });
-    // var container = document.getElementsByTagName("body")[0];
-    // var div = document.createElement("div");
-    // div.classList.add("full-container");
-    // container.appendChild(div);
-    // var div1 = document.createElement("div");
-    // div1.classList.add("imgContainer");
-    // div.appendChild(div1);
-    // var img = document.createElement("img");
-    // img.src = e.target.src;
-    // img.classList.add("modal-images");
-    // div1.appendChild(img);
-    // var span = document.createElement("span");
-    // span.innerHTML = "x";
-    // span.classList.add("spn-close");
-    // div1.appendChild(span);
-    // span.addEventListener("click",function () {
-    //     document.getElementsByClassName("full-container")[0].remove();
-    // })
 });
-// $('#profImage').mouseover(function () {
-//     var modal = $('#myModal');
-//     modal.modal('show');
-//     var content = modal.find('.modal-content');
-//     if (modal.find('.modal-content img').length > 0) {
-//         return;
-//     }
-//     $('<img id="photoHover" src="' + this.src + '">').appendTo(content);
-    // $(modal).click(function () {
-    //     debugger
-    //     $("#myModal").remove();
-    // })
-// });
-var biografi = $("#Biografi");
-var lastText = $("#last-text");
-biografi.mouseover(function () {
-    lastText.show(2000);
-    $([document.documentElement, document.body]).animate({
-        scrollTop: biografi.offset().top
-    }, 2000);
-});
-biografi.mouseleave(function () {
-    if (lastText.width() !== 374 ) {
+
+
+$('#profImage').mouseover(function () {
+    debugger
+    var modal = $('#myModal').clone();
+    modal.modal('show');
+    var content = modal.find('.modal-content');
+    if (modal.find('.modal-content img').length > 0) {
         return;
     }
-    if (lastText.is(":hover")) {
-        //kur te largohesh nga divi i poshtem fshije divin
-        lastText.mouseleave(function () {
-            if (!$(biografi).is(":hover")){
-                lastText.hide(2000);
-            }
-        })
-    }else {
-        lastText.hide(2000);
-    }
+    $('<img id="photoHover" src="' + this.src + '">').appendTo(content);
+    $(modal).click(function () {
+        debugger
+        $("#myModal").remove();
+        $(".modal-backdrop.in").css("opacity","0");
+    });
 });
-lastText.mouseleave(function () {
-    if (!$(biografi).is(":hover")){
-        lastText.hide(2000);
-    }
-})
 
+
+var biografi = $("#Biografi");
+var lastText = $("#last-text");
+var mutex = 1;
+biografi.hover(function () {
+    if (mutex === 0) {
+        return;
+    }
+    mutex = 0;
+    lastText.show(2000, function () {
+        if (lastText.is(":hover")) {
+           lastText.mouseleave(leaveText);
+        }else if (biografi.is(":hover")) {
+                biografi.mouseleave(leaveH1);
+        } else {
+            lastText.hide(2000,function () {
+                mutex = 1;
+            });
+        }
+    });
+    $([document.documentElement, document.body]).animate(
+        {scrollTop: biografi.offset().top}
+    ,2000);
+});
+
+function leaveH1() {
+    $(this).off("mouseleave");
+    if (lastText .is (":hover")) {
+        lastText.mouseleave(leaveH1);
+    } else {
+        lastText.hide(2000,function () {
+            mutex = 1;
+        })
+    }
+}
+
+
+function leaveText() {
+    $(this).off("mouseleave");
+    if (biografi.is(":hover")) {
+        biografi.mouseleave(leaveText);
+    }else {
+        lastText.hide(2000,function () {
+            mutex = 1;
+        })
+    }
+}
 
 
 

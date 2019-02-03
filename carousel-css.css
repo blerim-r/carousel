@@ -2,6 +2,7 @@ body , html {
     height: 100%;
     margin: 0;
     padding: 0;
+    min-width: px;
 }
 body {
     height: 100%;
@@ -28,6 +29,7 @@ body {
     display: flex;
     flex-flow: column;
     justify-content: center;
+    text-align: center;
 }
 .div3-in-div-1 {
     display: flex;
@@ -89,8 +91,8 @@ body {
 }
 .div-img-prf{
     margin: auto;
-    width: 80%;
-    height: 80%;
+    width: 250px;
+    height: 250px;
  }
 .div-input-2 {
     width: 100%;
@@ -125,6 +127,7 @@ body {
 .new-div {
     height: 450px;
     width: 400px;
+    position: relative;
 }
 .new-img {
     height: 100%;
@@ -233,3 +236,50 @@ body {
 #bioH1 {
      margin: 0!important;
  }
+.spnXCSS {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    color: #fff8f8;
+    font-size: xx-large;
+    z-index: 999999;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    visibility: hidden;
+}
+@media only screen and (max-width: 640px) {
+    .div1-in-div-1 {
+        position: relative;
+    }
+    .div-1 {
+        flex-flow: column;
+    }
+    .div-input {
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 193px;
+    }
+    .div2-in-div-1 {
+        height: 100px;
+    }
+    .div2-in-div-1 h1 {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+    .div2-in-div-1 h3 {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+    .div-img-prf {
+        margin: auto;
+        width: 200px;
+        height: 200px;
+    }
+    .div-2 {
+        margin-top: 13px;
+    }
+}
